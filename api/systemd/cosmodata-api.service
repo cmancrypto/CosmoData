@@ -1,0 +1,20 @@
+[Unit]
+Description=CosmoData API Service
+After=network.target mongodb.service
+Wants=mongodb.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/cosmodata/api
+ExecStart=/usr/bin/npm start
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=cosmodata-api
+Environment="NODE_ENV=production"
+EnvironmentFile=/opt/cosmodata/api/.env
+
+[Install]
+WantedBy=multi-user.target 

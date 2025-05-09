@@ -1,0 +1,20 @@
+[Unit]
+Description=CosmoData Daemon Service
+After=network.target mongodb.service
+Wants=mongodb.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/cosmodata/daemon
+ExecStart=/opt/cosmodata/daemon/venv/bin/python -m daemon.main
+Restart=on-failure
+RestartSec=10
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=cosmodata-daemon
+Environment="PYTHONPATH=/opt/cosmodata/daemon"
+EnvironmentFile=/opt/cosmodata/daemon/.env
+
+[Install]
+WantedBy=multi-user.target 

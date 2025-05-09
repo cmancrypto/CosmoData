@@ -1,0 +1,14 @@
+chains:
+  - chain_id: "symphony-testnet-4"
+    name: "Symphony Testnet"
+    rest_base_url: "https://rest.testcosmos.directory/symphonytestnet"
+    rpc_base_url: "https://rpc.testcosmos.directory/symphonytestnet"
+    enabled_endpoints:
+      - "block"
+      - "status"
+      - "validators"
+      - "market_params"
+      - "exchange_requirements"
+      - "tax_rate"
+      - "note_supply"
+    monitoring_frequency: 60  # seconds 

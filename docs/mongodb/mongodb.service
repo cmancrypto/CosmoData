@@ -1,0 +1,14 @@
+[Unit]
+Description=MongoDB Database Service
+After=network.target
+
+[Service]
+Type=simple
+User=mongodb
+ExecStart=/usr/bin/mongod --config /etc/mongod.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target 
